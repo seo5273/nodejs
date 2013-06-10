@@ -1,0 +1,35 @@
+var connect = require ('connect');
+
+var server = connect.createServer ( connect.router (function (app) {
+	app.get ('/Home/Index', function (request, response, next) {
+		response.writeHead (200, { 'Content-Type': 'text/html' });
+		response.write ('<h1>Index Page</h1>');
+		response.write ('<img src = "/seo.jpg" width = "100%" />');
+		response.end();
+	});
+}));
+
+server.use (connect.logger());
+server.use (connect.query());
+server.use (connect.static (__dirname + '/Resources'));
+
+/*
+server.use ( connect.router (function (app) {
+	app.get ('/Home/Index', function (request, response, next) {
+		response.writeHead (200, { 'Content-Type': 'text/html' });
+		response.write ('<h1>Index Page</h1>');
+		response.write ('<img src = "/seo.jpg" width = "100%" />');
+		response.end();
+	});
+}));
+*/
+
+server.use (connect.errorHandler ({
+	stack: true,
+	message: true,
+	dump: true
+}));
+
+server.listen (5273, function() {
+	console.log ('server running...');
+});
