@@ -6,3 +6,7 @@ node.js 는 javascript를 이용합니다.
 ### github 사이트 에서 수정 해 봅니다.
 
 ### test
+
+"'
+If there are more arguments than placeholders, the extra arguments are converted to strings with util.inspect() and these strings are concatenated, delimited by a space.
+"'
